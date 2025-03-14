@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d6336c;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            background-color: white;
+            color: #d6336c;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #ffccd5;
+        }
+        .message, .decision, #loveMessage, #signature {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        #loveMessage {
+            font-size: 30px;
+            color: yellow;
+        }
+        #signature {
+            font-size: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #noBtn {
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button id="clickMeBtn" onclick="showMessage()">Click Me</button>
+        <div id="message" class="message">I'm Sorry. Please Accept My Apologies. I Love You.</div>
+        <div id="decision" class="decision">
+            <p>Do you accept my apology?</p>
+            <button id="yesBtn" onclick="acceptApology()">Yes</button>
+            <button id="noBtn" onclick="shrinkNoButton()">No</button>
+        </div>
+        <div id="loveMessage">Thank you ❤️ I Love Youuuu ❤️</div>
+        <div id="signature">Made by your Muaykutty for Maluttan ❤️</div>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("clickMeBtn").style.display = "none"; // Hide "Click Me" button
+            document.getElementById("message").style.display = "block";
+            document.getElementById("decision").style.display = "block";
+        }
+
+        function acceptApology() {
+            document.getElementById("message").style.display = "none"; // Remove first apology
+            document.getElementById("decision").style.display = "none"; // Hide buttons
+            document.getElementById("loveMessage").style.display = "block"; // Show Thank You & Love Message
+            document.getElementById("signature").style.display = "block"; // Show signature
+        }
+
+        function shrinkNoButton() {
+            let noBtn = document.getElementById("noBtn");
+            let currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
+            if (currentSize > 5) {
+                noBtn.style.fontSize = (currentSize - 3) + "px";
+                noBtn.style.padding = (parseFloat(noBtn.style.padding) - 2) + "px";
+            } else {
+                noBtn.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
